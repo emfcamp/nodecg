@@ -1,0 +1,43 @@
+{
+    "name": "emf-nodecg",
+    "version": "1.0.0",
+    "description": "NodeCG bundle used for EMF stage screens & streams",
+    "main": "index.js",
+    "author": "Jon Wood <jon@blankpad.net>",
+    "license": "MIT",
+    "dependencies": {
+        "parcel": "^2.5.0",
+        "react-dom": "^18.1.0"
+    },
+    "targets": {
+        "dashboard-test": {
+            "source": "src/dashboards/test/index.html",
+            "distDir": "dashboard/test",
+            "publicUrl": "/bundles/emf-nodecg/dashboard/test"
+        },
+        "graphics-test": {
+            "source": "src/graphics/test/index.html",
+            "distDir": "graphics/test",
+            "publicUrl": "/bundles/emf-nodecg/graphics/test"
+        }
+    },
+    "nodecg": {
+        "compatibleRange": ">= 0.9",
+        "graphics": [
+            {
+                "name": "test",
+                "file": "test/index.html",
+                "width": 1920,
+                "height": 1080
+            }
+        ],
+        "dashboardPanels": [
+            {
+                "name": "test",
+                "title": "Test Panel",
+                "width": 2,
+                "file": "test/index.html"
+            }
+        ]
+    }
+}
