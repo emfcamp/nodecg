@@ -40,8 +40,8 @@
         "dashboardPanels": [
             {
                 "name": "test",
-                "title": "Test Panel",
-                "width": 2,
+                "title": "Test Settings",
+                "width": 4,
                 "file": "test/index.html"
             }
         ]
