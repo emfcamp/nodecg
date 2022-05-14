@@ -1,0 +1,21 @@
+services:
+  nodecg:
+    build: "."
+    ports:
+    - "9090:9090"
+    command: "nodecg start"
+    volumes:
+      - type: bind
+        source: "."
+        target: "/usr/src/emf-bundle"
+  
+  parcel:
+    build: "."
+    ports:
+    - "1234:1234"
+    working_dir: "/usr/src/emf-bundle"
+    command: "npm run watch"
+    volumes:
+      - type: bind
+        source: "."
+        target: "/usr/src/emf-bundle"
