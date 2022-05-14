@@ -1,15 +1,8 @@
-import { useReplicant } from '../../nodecg-hooks'
+import { useBooleanReplicant } from '../../nodecg-hooks'
 
 export function App () {
-  const [showSafezones, setShowSafezones] = useReplicant('showSafezones', false)
-  const toggleSafezones = () => {
-    setShowSafezones(!showSafezones)
-  }
-
-  const [showBug, setShowBug] = useReplicant('showBug', false)
-  const toggleBug = () => {
-    setShowBug(!showBug)
-  }
+  const [showSafezones, toggleSafezones] = useBooleanReplicant('showSafezones', false)
+  const [showBug, toggleBug] = useBooleanReplicant('showBug', false)
 
   return (
       <>

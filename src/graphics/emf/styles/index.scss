@@ -1,12 +1,27 @@
 $background: #151735;
 $text: #ffffff;
 
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/raleway.ttf');
+}
+
+@font-face {
+  font-family: 'Raleway Bold';
+  font-style: bold;
+  font-weight: 600;
+  src: url('../fonts/raleway.ttf');
+}
+
 body {
   margin: 0;
   background-color: $background;
   color: $text;
+  font-family: 'Raleway';
 }
-h1 { margin: 0; }
+h1, h2, h3, h4, h5, h6 { margin: 0; }
 
 #safezones {
   opacity: 10%;
@@ -29,4 +44,19 @@ h1 { margin: 0; }
   height: 1080px;
   padding: 28px 49px;
   box-sizing: border-box;
+}
+
+#speaker-details {
+  position: absolute;
+  top: 974px;
+  height: 98px;
+
+  h1 {
+    font-size: 33px;
+    font-family: 'Raleway Bold';
+  }
+
+  h2 {
+    font-size: 33px;
+  }
 }

@@ -23,3 +23,23 @@ export function useReplicant (name, defaultValue = null) {
 
   return [value, setReplicantValue]
 }
+
+export function useBooleanReplicant (name, defaultValue = false) {
+  const [value, setValue] = useReplicant(name, defaultValue)
+
+  function toggleValue () {
+    setValue(!value)
+  }
+
+  return [value, toggleValue, setValue]
+}
+
+export function useBooleanState (defaultValue = false) {
+  const [value, setValue] = useState(defaultValue)
+
+  function toggleValue () {
+    setValue(!value)
+  }
+
+  return [value, toggleValue, setValue]
+}

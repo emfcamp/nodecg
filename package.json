@@ -21,6 +21,11 @@
             "distDir": "./dashboard/test",
             "publicUrl": "/bundles/emf-nodecg/dashboard/test"
         },
+        "dashboard-example": {
+            "source": "src/dashboards/example/index.html",
+            "distDir": "./dashboard/example",
+            "publicUrl": "/bundles/emf-nodecg/dashboard/example"
+        },
         "graphics-emf": {
             "source": "src/graphics/emf/index.html",
             "distDir": "./graphics/emf",
@@ -42,8 +47,16 @@
             {
                 "name": "test",
                 "title": "Test Settings",
+                "workspace": "Development",
                 "width": 4,
                 "file": "test/index.html"
+            },
+            {
+                "name": "example",
+                "title": "Speaker Credits",
+                "workspace": "Live",
+                "width": 5,
+                "file": "example/index.html"
             }
         ]
     },
