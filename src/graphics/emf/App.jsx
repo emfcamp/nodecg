@@ -1,12 +1,17 @@
 import { useReplicant } from '../../nodecg-hooks'
+import { Safezones } from './Safezones'
+import { Bug } from './Bug'
 
 export function App () {
   const [showSafezones] = useReplicant('showSafezones', false)
+  const [showBug] = useReplicant('showBug', false)
 
   return (
-        <>
-            <h1>Hello</h1>
-            <h2>Test { showSafezones ? 'Safezones on' : 'Safezones off' }</h2>
-        </>
+    <>
+      <div id="content">
+      </div>
+      <Bug visible={showBug} />
+      <Safezones visible={showSafezones} />
+    </>
   )
 }

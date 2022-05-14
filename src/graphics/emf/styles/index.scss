@@ -1,0 +1,32 @@
+$background: #151735;
+$text: #ffffff;
+
+body {
+  margin: 0;
+  background-color: $background;
+  color: $text;
+}
+h1 { margin: 0; }
+
+#safezones {
+  opacity: 10%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+}
+
+#bug {
+  position: absolute;
+  bottom: 28px;
+  right: 49px;
+}
+
+#content {
+  width: 1920px;
+  height: 1080px;
+  padding: 28px 49px;
+  box-sizing: border-box;
+}

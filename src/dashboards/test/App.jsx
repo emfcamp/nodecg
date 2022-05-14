@@ -6,10 +6,21 @@ export function App () {
     setShowSafezones(!showSafezones)
   }
 
+  const [showBug, setShowBug] = useReplicant('showBug', false)
+  const toggleBug = () => {
+    setShowBug(!showBug)
+  }
+
   return (
       <>
-          <h1>Hello</h1>
-          <label><input type="checkbox" checked={showSafezones} onChange={toggleSafezones} /> Show safezones</label>
+          <p>These settings are intended for debugging, and will apply immediately.</p>
+          <p><strong>DO NOT USE THESE SETTINGS ON LIVE STAGES</strong></p>
+          <div>
+            <label><input type="checkbox" checked={showSafezones} onChange={toggleSafezones} /> Show safezones</label>
+          </div>
+          <div>
+            <label><input type="checkbox" checked={showBug} onChange={toggleBug} /> Show bug</label>
+          </div>
       </>
   )
 }
