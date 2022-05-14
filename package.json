@@ -9,6 +9,10 @@
         "parcel": "^2.5.0",
         "react-dom": "^18.1.0"
     },
+    "scripts": {
+        "build": "./node_modules/.bin/parcel build",
+        "watch": "./node_modules/.bin/parcel watch"
+    },
     "targets": {
         "dashboard-test": {
             "source": "src/dashboards/test/index.html",
@@ -26,6 +30,7 @@
         "graphics": [
             {
                 "name": "test",
+                "title": "Test",
                 "file": "test/index.html",
                 "width": 1920,
                 "height": 1080
