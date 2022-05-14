@@ -7,6 +7,7 @@
     "license": "MIT",
     "dependencies": {
         "parcel": "^2.5.0",
+        "react": "^18.1.0",
         "react-dom": "^18.1.0"
     },
     "scripts": {
@@ -16,22 +17,22 @@
     "targets": {
         "dashboard-test": {
             "source": "src/dashboards/test/index.html",
-            "distDir": "dashboard/test",
+            "distDir": "./dashboard/test",
             "publicUrl": "/bundles/emf-nodecg/dashboard/test"
         },
-        "graphics-test": {
-            "source": "src/graphics/test/index.html",
-            "distDir": "graphics/test",
-            "publicUrl": "/bundles/emf-nodecg/graphics/test"
+        "graphics-emf": {
+            "source": "src/graphics/emf/index.html",
+            "distDir": "./graphics/emf",
+            "publicUrl": "/bundles/emf-nodecg/graphics/emf"
         }
     },
     "nodecg": {
         "compatibleRange": ">= 0.9",
         "graphics": [
             {
-                "name": "test",
-                "title": "Test",
-                "file": "test/index.html",
+                "name": "emf",
+                "title": "EMF Stage Graphics",
+                "file": "emf/index.html",
                 "width": 1920,
                 "height": 1080
             }
@@ -44,5 +45,13 @@
                 "file": "test/index.html"
             }
         ]
+    },
+    "devDependencies": {
+        "eslint": "^8.15.0",
+        "eslint-config-standard": "^17.0.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-n": "^15.2.0",
+        "eslint-plugin-promise": "^6.0.0",
+        "eslint-plugin-react": "^7.29.4"
     }
 }
