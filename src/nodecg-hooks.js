@@ -54,18 +54,27 @@ export function useBooleanState (defaultValue = false) {
   return [value, toggleValue, setValue]
 }
 
+// DO NOT RUN AN EVENT OVER MULTIPLE TIMEZONES, THIS WILL FALL FLAT ON ITS ARSE
 export function useReplicatedTime () {
-  const [time, setTime] = useState(new Date())
-  let timer = null
+  const [startTime] = useState(new Date())
+  const [lastServerTime, setLastServerTime] = useState(startTime.getTime())
+  const [lastUpdateReceived, setLastUpdateReceived] = useState(startTime.getTime())
+  const [time, setTime] = useState(new Date(lastServerTime))
 
   useEffect(() => {
     function onTimeReceived (newValue) {
-      console.log("New time received", newValue)
+      setLastServerTime(newValue)
+      setLastUpdateReceived(new Date().getTime())
       setTime(new Date(newValue))
     }
 
     function incrementTime () {
-      setTime(new Date(time.getTime() + 1000))
+      let now = new Date().getTime()
+      let timeSinceLastUpdate = now - lastUpdateReceived
+      if (timeSinceLastUpdate > 1500) {
+        console.log("No time update received, incrementing locally. Time since last update: ", timeSinceLastUpdate, now, lastUpdateReceived)
+        setTime(new Date(lastServerTime + timeSinceLastUpdate))
+      }
     }
 
     window.nodecg.listenFor('tick', onTimeReceived)

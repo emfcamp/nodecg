@@ -14,12 +14,17 @@ export function App () {
   const [newTime, setNewTime] = useState(new Date().toISOString())
 
   function broadcastNewTime () {
-    window.nodecg.sendMessage('setTime', new Date(newTime).getTime())
+    let now = new Date().getTime()
+    let target = new Date(newTime).getTime()
+    let offset = target - now
+
+    console.log("Setting offset to ", offset)
+    window.nodecg.sendMessage('updateTimeOffset', offset)
   }
 
   function resetTimeToNow () {
     let currentTime = new Date()
-    window.nodecg.sendMessage('setTime', currentTime.getTime())
+    window.nodecg.sendMessage('updateTimeOffset', 0)
     setNewTime(currentTime.toISOString())
   }
 

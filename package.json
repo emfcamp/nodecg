@@ -35,6 +35,12 @@
             "source": "src/dashboards/stage/index.html",
             "distDir": "./dashboard/stage",
             "publicUrl": "/bundles/emf-nodecg/dashboard/stage-a"
+        },
+        "extension": {
+            "source": "src/extension/index.js",
+            "distDir": "./extension",
+            "outputFormat": "commonjs",
+            "isLibrary": true
         }
     },
     "nodecg": {
