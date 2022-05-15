@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -ex
+
+ROOT=$(git rev-parse --show-toplevel)
+
+mkdir -p "${ROOT}/dashboard"
+pushd "${ROOT}/dashboard"
+for STAGE in a b c t; do
+  if [ ! -h "stage-${STAGE}" ]; then
+    ln -s stage "stage-${STAGE}"
+  fi
+done
+popd
+
+mkdir -p "${ROOT}/graphics"
+pushd "${ROOT}/graphics"
+for STAGE in a b c t; do
+  if [ ! -h "stage-${STAGE}" ]; then
+    ln -s emf "stage-${STAGE}"
+  fi
+done
+popd
+
+./node_modules/.bin/parcel build

@@ -1,4 +1,4 @@
-import { useReplicant } from '../../nodecg-hooks'
+import { useReplicant, useScopedReplicant } from '../../nodecg-hooks'
 import { Safezones } from './Safezones'
 import { Bug } from './Bug'
 import { SpeakerDetails } from './SpeakerDetails'
@@ -6,7 +6,7 @@ import { SpeakerDetails } from './SpeakerDetails'
 export function App () {
   const [showSafezones] = useReplicant('showSafezones', false)
   const [showBug] = useReplicant('showBug', false)
-  const [speakerDetails] = useReplicant('speakerDetails', { visible: false, title: '', speaker: '' })
+  const [speakerDetails] = useScopedReplicant('speakerDetails', { visible: false, title: '', speaker: '' })
 
   return (
     <>

@@ -6,6 +6,9 @@
     "author": "Jon Wood <jon@blankpad.net>",
     "license": "MIT",
     "dependencies": {
+        "@emotion/react": "^11.9.0",
+        "@emotion/styled": "^11.8.1",
+        "@mui/material": "^5.7.0",
         "parcel": "^2.5.0",
         "prop-types": "^15.8.1",
         "react": "^18.1.0",
@@ -13,51 +16,89 @@
         "react-transition-group": "^4.4.2"
     },
     "scripts": {
-        "build": "./node_modules/.bin/parcel build",
+        "build": "./bin/build",
         "watch": "./node_modules/.bin/parcel watch"
     },
     "targets": {
-        "dashboard-test": {
-            "source": "src/dashboards/test/index.html",
-            "distDir": "./dashboard/test",
-            "publicUrl": "/bundles/emf-nodecg/dashboard/test"
-        },
-        "dashboard-example": {
-            "source": "src/dashboards/example/index.html",
-            "distDir": "./dashboard/example",
-            "publicUrl": "/bundles/emf-nodecg/dashboard/example"
-        },
         "graphics-emf": {
             "source": "src/graphics/emf/index.html",
             "distDir": "./graphics/emf",
             "publicUrl": "/bundles/emf-nodecg/graphics/emf"
+
+        },
+        "dashboard-dev": {
+            "source": "src/dashboards/dev/index.html",
+            "distDir": "./dashboard/dev",
+            "publicUrl": "/bundles/emf-nodecg/dashboard/dev"
+        },
+        "dashboard-stage": {
+            "source": "src/dashboards/stage/index.html",
+            "distDir": "./dashboard/stage",
+            "publicUrl": "/bundles/emf-nodecg/dashboard/stage-a"
         }
     },
     "nodecg": {
         "compatibleRange": ">= 0.9",
         "graphics": [
             {
-                "name": "emf",
-                "title": "EMF Stage Graphics",
-                "file": "emf/index.html",
+                "name": "stage-a",
+                "title": "Stage A Graphics",
+                "file": "stage-a/index.html",
+                "width": 1920,
+                "height": 1080
+            },
+            {
+                "name": "stage-b",
+                "title": "Stage B Graphics",
+                "file": "stage-b/index.html",
+                "width": 1920,
+                "height": 1080
+            },
+            {
+                "name": "stage-c",
+                "title": "Stage C Graphics",
+                "file": "stage-c/index.html",
+                "width": 1920,
+                "height": 1080
+            },
+            {
+                "name": "stage-t",
+                "title": "Test Stage Graphics",
+                "file": "stage-t/index.html",
                 "width": 1920,
                 "height": 1080
             }
         ],
         "dashboardPanels": [
             {
-                "name": "test",
-                "title": "Test Settings",
-                "workspace": "Development",
-                "width": 4,
-                "file": "test/index.html"
+                "name": "dev",
+                "title": "Development Settings",
+                "file": "dev/index.html",
+                "fullbleed": true
             },
             {
-                "name": "example",
-                "title": "Speaker Credits",
-                "workspace": "Live",
-                "width": 5,
-                "file": "example/index.html"
+                "name": "stage-a",
+                "title": "Stage A",
+                "file": "stage-a/index.html",
+                "fullbleed": true
+            },
+            {
+                "name": "stage-b",
+                "title": "Stage B",
+                "file": "stage-b/index.html",
+                "fullbleed": true
+            },
+            {
+                "name": "stage-c",
+                "title": "Stage C",
+                "file": "stage-c/index.html",
+                "fullbleed": true
+            },
+            {
+                "name": "stage-t",
+                "title": "Test Stage",
+                "file": "stage-t/index.html",
+                "fullbleed": true
             }
         ]
     },

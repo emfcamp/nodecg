@@ -24,6 +24,12 @@ export function useReplicant (name, defaultValue = null) {
   return [value, setReplicantValue]
 }
 
+export function useScopedReplicant (name, defaultValue = null) {
+  const scope = document.location.pathname.split("/")[4]
+
+  return useReplicant(`${scope}/${name}`, defaultValue)
+}
+
 export function useBooleanReplicant (name, defaultValue = false) {
   const [value, setValue] = useReplicant(name, defaultValue)
 
