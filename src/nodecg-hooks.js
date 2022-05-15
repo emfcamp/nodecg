@@ -7,10 +7,6 @@ export function useReplicant (name, defaultValue = null) {
   function setReplicantValue (newValue) {
     replicant.value = newValue
     setValue(newValue)
-
-    if (opts.onUpdate) {
-      opts.onUpdate(newValue)
-    }
   }
 
   useEffect(() => {

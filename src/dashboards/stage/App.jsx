@@ -1,36 +1,65 @@
-import { useScopedReplicant } from '../../nodecg-hooks'
+import { useScopedReplicant, useReplicatedTime } from '~/src/nodecg-hooks'
 import CssBaseline from '@mui/material/CssBaseline'
-import Button from '@mui/material/Button'
-import Checkbox from '@mui/material/Checkbox'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import FormGroup from '@mui/material/FormGroup'
-import TextField from '@mui/material/TextField'
+import Box from '@mui/material/Box'
+import Grid from '@mui/material/Grid'
+import Tab from '@mui/material/Tab'
+import Tabs from '@mui/material/Tabs'
+import Paper from '@mui/material/Paper'
 
-export function App () {
-  const [speakerDetails, setSpeakerDetails] = useScopedReplicant('speakerDetails', { visible: false, title: '', speaker: '' })
-  const [cued, setCued] = useScopedReplicant('cuedSpeakerDetails', { visible: false, title: '', speaker: '' })
+import { LiveView } from './views/Live'
+import { InterstitialView } from './views/Interstitial'
 
-  function cue () {
-    setSpeakerDetails(cued)
-  }
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
 
   return (
-      <>
-        <CssBaseline enableColorscheme />
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`tabpanel-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          {children}
+        </Box>
+      )}
+    </div>
+  );
+}
 
-        <FormGroup>
-          <FormControlLabel label="Visible" control={
-            <Checkbox id="visible" size="large" checked={ cued.visible } onChange={ () => setCued({ ...cued, visible: !cued.visible })} />
-          } />
-        </FormGroup>
-        <FormGroup>
-          <TextField id="title" label="Content Title" margin="normal" variant="outlined" InputLabelProps={{ shrink: true }} value={ cued.title } onChange={ (e) => setCued({ ...cued, title: e.target.value }) } />
-        </FormGroup>
-        <FormGroup>
-          <TextField id="speaker" label="Speaker" margin="normal" variant="outlined" InputLabelProps={{ shrink: true }} value={ cued.speaker } onChange={ (e) => setCued({ ...cued, speaker: e.target.value }) } />
-        </FormGroup>
+export function App () {
+  const [selectedTab, setSelectedTab] = useScopedReplicant("selectedConfigTab", 0);
+  const time = useReplicatedTime()
 
-        <Button onClick={ cue } variant="contained">Cue</Button>
-      </>
-  )
+  const handleChange = (event, newValue) => {
+    setSelectedTab(newValue);
+  };
+
+  return (
+    <>
+      <CssBaseline enableColorscheme />
+      <Grid container spacing={2}>
+        <Grid item xs={8}>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Tabs value={selectedTab} onChange={handleChange}>
+              <Tab label="Live" />
+              <Tab label="Interstitial" />
+            </Tabs>
+          </Box>
+          <TabPanel value={selectedTab} index={0}>
+            <LiveView />
+          </TabPanel>
+          <TabPanel value={selectedTab} index={1}>
+            <InterstitialView />
+          </TabPanel>
+        </Grid>
+        <Grid item xs={4}>
+          <Paper elevation={1} className="clock">
+            <h1>{ time.toLocaleTimeString() }</h1>
+          </Paper>
+        </Grid>
+      </Grid>
+    </>
+  );
 }

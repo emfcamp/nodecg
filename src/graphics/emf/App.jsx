@@ -1,18 +1,29 @@
-import { useReplicant, useScopedReplicant } from '../../nodecg-hooks'
+import { useReplicant, useScopedReplicant } from '~/src/nodecg-hooks'
 import { Safezones } from './Safezones'
 import { Bug } from './Bug'
-import { SpeakerDetails } from './SpeakerDetails'
+import { LiveView } from './views/live/View'
+import { InterstitialView } from './views/interstitial/View'
 
 export function App () {
   const [showSafezones] = useReplicant('showSafezones', false)
   const [showBug] = useReplicant('showBug', false)
-  const [speakerDetails] = useScopedReplicant('speakerDetails', { visible: false, title: '', speaker: '' })
+  const [activeView] = useScopedReplicant('activeView', 'live')
+
+  let view = null
+  switch (activeView) {
+    case 'live':
+      view = <LiveView />
+      break;
+    case 'interstitial':
+      view = <InterstitialView />
+      break;
+    default:
+      view = <h1>Oh no! Mode { activeView } is not supported</h1>
+  }
 
   return (
     <>
-      <div id="content">
-        <SpeakerDetails visible={speakerDetails.visible} title={speakerDetails.title} speaker={speakerDetails.speaker} />
-      </div>
+      { view }
       <Bug visible={showBug} />
       <Safezones visible={showSafezones} />
     </>
