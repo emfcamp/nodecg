@@ -59,4 +59,26 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
   h2 {
     font-size: 33px;
   }
+
+  &.anim.enter {
+    opacity: 0.01;
+  }
+
+  &.anim.enter-active {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+  }
+  
+  &.anim.exit {
+    opacity: 1;
+  }
+
+  &.anim.exit-active {
+    opacity: 0.01;
+    transition: opacity .5s ease-in;
+  }
+
+  &.anim.exit-done {
+    display: none;
+  }
 }
