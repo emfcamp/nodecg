@@ -8,6 +8,7 @@ import Paper from '@mui/material/Paper'
 
 import { LiveView } from './views/Live'
 import { InterstitialView } from './views/Interstitial'
+import { schedule } from '../../extension/schedule'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -30,12 +31,23 @@ function TabPanel(props) {
 
 export function App () {
   const [selectedTab, setSelectedTab] = useScopedReplicant("selectedConfigTab", 0);
+  const [schedule] = useScopedReplicant("schedule", [])
   const time = useReplicatedTime()
 
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
   };
 
+  function renderEvent(event) {
+    return (
+      <p key={event.id}>
+        {event.start_time}<br/>
+        <strong>{event.title}</strong><br />
+        {event.speaker}
+      </p>
+    )
+  }
+  
   return (
     <>
       <CssBaseline enableColorscheme />
@@ -58,6 +70,10 @@ export function App () {
           <Paper elevation={1} className="clock">
             <h1>{ time.toLocaleTimeString() }</h1>
           </Paper>
+
+          <div>
+            { schedule.map(event => renderEvent(event)) }
+          </div>
         </Grid>
       </Grid>
     </>
