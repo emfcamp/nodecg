@@ -32,15 +32,20 @@ function TabPanel(props) {
 export function App () {
   const [selectedTab, setSelectedTab] = useScopedReplicant("selectedConfigTab", 0);
   const [schedule] = useScopedReplicant("schedule", [])
+  const [cuedSpeaker, setCuedSpeaker] = useScopedReplicant('cuedSpeakerDetails', { visible: false, title: '', speaker: '' })
   const time = useReplicatedTime()
 
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
   };
 
+  function eventClicked(event) {
+    setCuedSpeaker({ ...cuedSpeaker, title: event.title, speaker: event.speaker })
+  }
+
   function renderEvent(event) {
     return (
-      <p key={event.id}>
+      <p key={event.id} onClick={ () => eventClicked(event) }>
         {event.start_time}<br/>
         <strong>{event.title}</strong><br />
         {event.speaker}
