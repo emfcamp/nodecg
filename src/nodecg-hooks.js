@@ -7,6 +7,10 @@ export function useReplicant (name, defaultValue = null) {
   function setReplicantValue (newValue) {
     replicant.value = newValue
     setValue(newValue)
+
+    if (opts.onUpdate) {
+      opts.onUpdate(newValue)
+    }
   }
 
   useEffect(() => {
@@ -48,4 +52,30 @@ export function useBooleanState (defaultValue = false) {
   }
 
   return [value, toggleValue, setValue]
+}
+
+export function useReplicatedTime () {
+  const [time, setTime] = useState(new Date())
+  let timer = null
+
+  useEffect(() => {
+    function onTimeReceived (newValue) {
+      console.log("New time received", newValue)
+      setTime(new Date(newValue))
+    }
+
+    function incrementTime () {
+      setTime(new Date(time.getTime() + 1000))
+    }
+
+    window.nodecg.listenFor('tick', onTimeReceived)
+    timer = setInterval(incrementTime, 1000)
+
+    return () => {
+      window.nodecg.unlisten('tick', onTimeReceived)
+      clearInterval(timer)
+    }
+  })
+
+  return time
 }
