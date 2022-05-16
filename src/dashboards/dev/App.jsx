@@ -11,6 +11,8 @@ export function App () {
   const time = useReplicatedTime()
   const [showSafezones, toggleSafezones] = useBooleanReplicant('showSafezones', false)
   const [showBug, toggleBug] = useBooleanReplicant('showBug', false)
+  const [showSlides, toggleShowslides] = useBooleanReplicant('showSlides', false)
+  const [showVideoframe, toggleShowvideoframe] = useBooleanReplicant('showVideoframe', false)
   const [newTime, setNewTime] = useState(new Date().toISOString())
 
   function broadcastNewTime () {
@@ -37,6 +39,16 @@ export function App () {
           <FormGroup>
             <FormControlLabel label="Show safezones" control={
               <Checkbox size="large" checked={ showSafezones } onChange={ toggleSafezones } />
+            } />
+          </FormGroup>
+          <FormGroup>
+            <FormControlLabel label="Show video frame" control={
+              <Checkbox size="large" checked={ showVideoframe } onChange={ toggleShowvideoframe } />
+            } />
+          </FormGroup>
+          <FormGroup>
+            <FormControlLabel label="Show slides" control={
+              <Checkbox size="large" checked={ showSlides } onChange={ toggleShowslides } />
             } />
           </FormGroup>
           <FormGroup>

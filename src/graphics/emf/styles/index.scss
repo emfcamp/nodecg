@@ -1,5 +1,10 @@
-$background: #151735;
+@use 'sass:color';
+
+$background: #151735ff;
+$background-transparent: color.adjust($background, $alpha: -0.2);
 $text: #ffffff;
+$top-padding: 28px;
+$side-padding: 49px;
 
 @font-face {
   font-family: 'Raleway';
@@ -21,10 +26,11 @@ body {
   color: $text;
   font-family: 'Raleway';
 }
+div { box-sizing: border-box; }
 h1, h2, h3, h4, h5, h6 { margin: 0; }
 
 #safezones {
-  opacity: 10%;
+  opacity: 70%;
 
   position: absolute;
   top: 0;
@@ -39,46 +45,85 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
   right: 49px;
 }
 
+#slide {
+  position: absolute;
+  display: block;
+  top: 155px;
+  left: 48px;
+  width: 1360px;
+  height: 770px;
+}
+
+#videoframe {
+  position: absolute;
+  display: block;
+  top: 155px;
+  left: 1451px;
+  width: 420;
+  height: 570;
+}
+
+#fullscreen-video {
+  position: absolute;
+  display: block;
+  top: 0px;
+  left: 0px;
+  width: 1920;
+  height: 1080;
+}
+
 #content {
   width: 1920px;
   height: 1080px;
-  padding: 28px 49px;
-  box-sizing: border-box;
+  padding: $side-padding $top-padding;
+  background-image: url('../images/background.png');
 }
 
-#speaker-details {
+.bottom-bar {
   position: absolute;
-  top: 974px;
-  height: 98px;
+  left: 0;
+  top: 938px;
+  height: 143px;
+  width: 1920px;
+  padding-left: $side-padding;
+  background-color: $background-transparent;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-  h1 {
-    font-size: 33px;
-    font-family: 'Raleway Bold';
-  }
-
-  h2 {
-    font-size: 33px;
-  }
-
-  &.anim.enter {
+  &.enter {
     opacity: 0.01;
   }
 
-  &.anim.enter-active {
+  &.enter-active {
     opacity: 1;
     transition: opacity .5s ease-in;
   }
   
-  &.anim.exit {
+  &.exit {
     opacity: 1;
   }
 
-  &.anim.exit-active {
+  &.exit-active {
     opacity: 0.01;
     transition: opacity .5s ease-in;
   }
 
-  &.anim.exit-done {
+  &.exit-done {
     display: none;
+  }
+}
+
+#speaker-details {
+  h1 {
+    font-size: 33px;
+    font-family: 'Raleway Bold';
+    opacity: 1;
+  }
+
+  h2 {
+    font-size: 33px;
+    opacity: 1;
   }
 }
