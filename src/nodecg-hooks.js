@@ -10,6 +10,8 @@ export function useReplicant (name, defaultValue = null) {
   }
 
   useEffect(() => {
+    setValue(defaultValue)
+    
     function onReplicantChanged (newValue) {
       setValue(newValue)
     }
@@ -19,7 +21,7 @@ export function useReplicant (name, defaultValue = null) {
     return () => {
       replicant.removeListener('change', onReplicantChanged)
     }
-  })
+  }, [])
 
   return [value, setReplicantValue]
 }

@@ -5,15 +5,15 @@ import { CSSTransition } from 'react-transition-group'
 const replicant = window.nodecg.Replicant(`${stageName()}/speakerDetails`)
 
 export function SpeakerDetails () {
-  const [visible, setVisible] = useState(null)
-  const [title, setTitle] = useState(null)
-  const [speaker, setSpeaker] = useState(null)
+  const [visible, setVisible] = useState(false)
+  const [title, setTitle] = useState("")
+  const [speaker, setSpeaker] = useState("")
 
   useEffect(() => {
     let timeoutHandle = null
     
     function updateSpeakerDetails(newValue, oldValue) {
-      if (oldValue === undefined) { return false }
+      if (oldValue === undefined) { return; }
 
       if (newValue.visible != oldValue.visible && !timeoutHandle) {
         setTitle(newValue.title)
@@ -26,7 +26,6 @@ export function SpeakerDetails () {
         setVisible(false)
 
         timeoutHandle = setTimeout(() => {
-          console.log("Triggered timeout")
           setTitle(newValue.title)
           setSpeaker(newValue.speaker)
           setVisible(true)
@@ -35,13 +34,7 @@ export function SpeakerDetails () {
       }
     }
 
-    NodeCG.waitForReplicants(replicant).then(() => {
-      setVisible(replicant.value.visible)
-      setTitle(replicant.value.title)
-      setSpeaker(replicant.value.speaker)
-
-      replicant.on('change', updateSpeakerDetails)
-    })
+    replicant.on('change', updateSpeakerDetails)
 
     return () => {
       replicant.removeListener('change', updateSpeakerDetails)
@@ -56,7 +49,8 @@ export function SpeakerDetails () {
       <CSSTransition
         className="bottom-bar"
         timeout={500}
-        in={visible}>
+        in={visible}
+        mountOnEnter>
 
         <div id="speaker-details">
           <h1>{ title }</h1>
