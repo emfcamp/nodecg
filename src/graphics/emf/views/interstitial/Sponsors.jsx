@@ -1,17 +1,10 @@
 import { CSSTransition } from 'react-transition-group'
 import { useState, useEffect } from 'react'
 
-const preloadedImages = []
-
 const goldSponsors = [
   new URL('~/src/graphics/emf/images/sponsors/google.png?height=160', import.meta.url),
   new URL('~/src/graphics/emf/images/sponsors/lucid.png?height=160', import.meta.url),
 ];
-goldSponsors.forEach((logo) => {
-  let img = new Image()
-  img.src = logo
-  preloadedImages.push(img)
-})
 
 const silverSponsors = [
   new URL('~/src/graphics/emf/images/sponsors/pcbgogo.png?height=70', import.meta.url),
@@ -24,16 +17,29 @@ const silverSponsors = [
   new URL('~/src/graphics/emf/images/sponsors/sargasso.png?height=70', import.meta.url),
   new URL('~/src/graphics/emf/images/sponsors/aiven.png?height=70', import.meta.url),
 ]
-goldSponsors.forEach((logo) => {
-  let img = new Image()
-  img.src = logo
-  preloadedImages.push(img)
-})
 
 export function Sponsors () {
+  const [visible, setVisible] = useState(false)
+
+  // Trigger an immediate fade in of the sponsors list
+  useEffect(() => {
+    let timer = setTimeout(() => setVisible(true))
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [])
+
   return (
     <div id="content">
-      <div id="top" className="sponsors">
+      <CSSTransition
+        in={visible}
+        timeout={500}
+        className="sponsors"
+        mountOnEnter
+        unmountOnExit>
+
+        <div id="top">
           <h1>Sponsored by</h1>
           <div className="container">
             <div className="gold">
@@ -43,7 +49,8 @@ export function Sponsors () {
               {silverSponsors.map(logo => <img key={logo} src={logo} height="70" />)}
             </div>
           </div>
-      </div>
+        </div>
+      </CSSTransition>
     </div>
   )
 }
