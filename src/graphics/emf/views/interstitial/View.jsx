@@ -1,9 +1,7 @@
-import { useScopedReplicant } from '~/src/nodecg-hooks'
+import { Sponsors } from './Sponsors'
 
 export function InterstitialView () {
   return (
-    <div id="content">
-      <h1>More coming soon</h1>
-    </div>
+    <Sponsors />
   )
 }

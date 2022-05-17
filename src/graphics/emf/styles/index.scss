@@ -2,6 +2,9 @@
 
 $background: #151735ff;
 $background-transparent: color.adjust($background, $alpha: -0.2);
+$bright-background: #90ccd6ff;
+$bright-background-transparent: color.adjust($bright-background, $alpha: -0.05);
+
 $text: #ffffff;
 $top-padding: 28px;
 $side-padding: 49px;
@@ -72,6 +75,14 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
   height: 1080;
 }
 
+#top {
+  position: absolute;
+  height: 923px;
+  width: 1920px - ($side-padding * 2);
+  top: $top-padding;
+  left: $side-padding;
+}
+
 #content {
   width: 1920px;
   height: 1080px;
@@ -125,5 +136,64 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
   h2 {
     font-size: 33px;
     opacity: 1;
+  }
+}
+
+.sponsors {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h1 {
+    font: 'Raleway';
+    font-size: 64px;
+    text-align: center;
+    margin-bottom: 0.5em;
+  }
+
+  .container {
+    background-color: $bright-background-transparent;
+    margin: 0 220px;
+    border-radius: 10px;
+    padding: 30px;
+
+    div {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: center;
+      gap: 40px;
+
+      img {
+        display: block;
+      }
+    }
+
+    .gold {
+      margin-bottom: 80px;
+    }
+  }
+  
+  &.enter {
+    opacity: 0.01;
+  }
+
+  &.enter-active {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+  }
+  
+  &.exit {
+    opacity: 1;
+  }
+
+  &.exit-active {
+    opacity: 0.01;
+    transition: opacity .5s ease-in;
+  }
+
+  &.exit-done {
+    display: none;
   }
 }

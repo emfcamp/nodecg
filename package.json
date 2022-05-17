@@ -106,6 +106,8 @@
                 "file": "stage-t/index.html",
                 "fullbleed": true
             }
+        ],
+        "assetCategories": [
         ]
     },
     "devDependencies": {
