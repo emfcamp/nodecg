@@ -7,6 +7,7 @@ $bright-background-transparent: color.adjust($bright-background, $alpha: -0.05);
 
 $orange: #f6a318;
 $cyan: #90ccd6;
+$pink: #e4147e;
 
 $text: #ffffff;
 $top-padding: 28px;
@@ -214,12 +215,14 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
     
     p { margin-bottom: 0; margin-top: 0; }
 
+    color: #ccc;
+    &.current-track { color: #fff; }
+
     .time-and-place {
       width: 20%;
       border-right: 5px solid #fff;
       padding: 20px;
       text-align: center;
-
 
       .venue {
         font-size: 64px;

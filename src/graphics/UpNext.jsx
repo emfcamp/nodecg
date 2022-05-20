@@ -1,5 +1,4 @@
-import { useEffect } from 'react'
-import { useReplicant, useReplicatedTime } from '~/src/nodecg-hooks'
+import { useReplicant, useReplicatedTime, stageName } from '~/src/nodecg-hooks'
 
 export function UpNext () {
   const time = useReplicatedTime()
@@ -20,9 +19,11 @@ export function UpNext () {
   function stageDetail(stage, id) {
     const next = upNext(stage)
     if (next === null || next === undefined) { return null }
+    console.log(stageName(), id)
+    const currentTrack = stageName() === id ? 'current-track' : '';
 
     return (
-      <div id={ id } className="track">
+      <div id={ id } className={ `track ${currentTrack}` }>
         <div className="time-and-place">
           <p className="venue">{ next.venue }</p>
           <p className="time">{ next.start_time }</p>
@@ -33,10 +34,6 @@ export function UpNext () {
         </div>
       </div>
     )
-  }
-
-  if (!stageA && !stageB && !stageC) {
-    return null;
   }
 
   return (
