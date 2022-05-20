@@ -5,6 +5,9 @@ $background-transparent: color.adjust($background, $alpha: -0.2);
 $bright-background: #90ccd6ff;
 $bright-background-transparent: color.adjust($bright-background, $alpha: -0.05);
 
+$orange: #f6a318;
+$cyan: #90ccd6;
+
 $text: #ffffff;
 $top-padding: 28px;
 $side-padding: 49px;
@@ -139,7 +142,7 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
   }
 }
 
-.sponsors {
+#top {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -148,7 +151,7 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
     font: 'Raleway';
     font-size: 64px;
     text-align: center;
-    margin-bottom: 0.5em;
+    margin-bottom: 40px;
   }
 
   .container {
@@ -156,23 +159,6 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
     margin: 0 220px;
     border-radius: 10px;
     padding: 30px;
-
-    div {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-content: center;
-      gap: 40px;
-
-      img {
-        display: block;
-      }
-    }
-
-    .gold {
-      margin-bottom: 80px;
-    }
   }
   
   &.enter {
@@ -195,5 +181,72 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
 
   &.exit-done {
     display: none;
+  }
+}
+
+.sponsors {
+  div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 40px;
+
+    img {
+      display: block;
+    }
+  }
+
+  .gold {
+    margin-bottom: 80px;
+  }
+}
+
+.up-next {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+
+  .track {
+    display: flex;
+    flex-direction: row;
+    
+    p { margin-bottom: 0; margin-top: 0; }
+
+    .time-and-place {
+      width: 20%;
+      border-right: 5px solid #fff;
+      padding: 20px;
+      text-align: center;
+
+
+      .venue {
+        font-size: 64px;
+      }
+
+      .time {
+        font-size: 43px;
+        font-family: 'Raleway Bold';
+      }
+    }
+
+    .content {
+      width: 80%;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+
+      .title {
+        font-size: 43px;
+      }
+
+      .speaker {
+        font-size: 43px;
+        font-family: 'Raleway Bold';
+      }
+    }
   }
 }

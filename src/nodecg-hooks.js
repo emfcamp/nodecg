@@ -11,7 +11,7 @@ export function useReplicant (name, defaultValue = null) {
 
   useEffect(() => {
     setValue(defaultValue)
-    
+
     function onReplicantChanged (newValue) {
       setValue(newValue)
     }
@@ -54,6 +54,20 @@ export function useBooleanState (defaultValue = false) {
   return [value, toggleValue, setValue]
 }
 
+export function useListener (message, callback) {
+  useEffect(() => {
+    window.nodecg.listenFor(message, callback)
+
+    return () => {
+      window.nodecg.unlisten(message, callback)
+    }
+  }, [])
+}
+
+export function useScopedListener (message, callback) {
+  return useListener(`${stageName()}/${message}`, callback)
+}
+
 // DO NOT RUN AN EVENT OVER MULTIPLE TIMEZONES, THIS WILL FALL FLAT ON ITS ARSE
 export function useReplicatedTime () {
   const [startTime] = useState(new Date())
@@ -87,4 +101,14 @@ export function useReplicatedTime () {
   })
 
   return time
+}
+
+export function useTimeout(timeout, callback) {
+  useEffect(() => {
+    let timer = setTimeout(() => { console.log('Triggered timeout', timeout); callback() }, timeout)
+
+    return () => {
+      clearTimeout(timer)
+    }
+  })
 }
