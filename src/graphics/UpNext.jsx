@@ -35,6 +35,10 @@ export function UpNext () {
     )
   }
 
+  if (!stageA && !stageB && !stageC) {
+    return null;
+  }
+
   return (
     <div id="top">
       <h1>Up Next</h1>
