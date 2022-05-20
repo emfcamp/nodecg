@@ -64,6 +64,12 @@ export function schedule (nodecg) {
       });
 
       schedules.forEach(schedule => {
+        sortedSchedule = groupedSchedules[schedule].sort((a, b) => {
+          if (a.start_date < b.start_date) { return -1 }
+          if (b.start_date < a.start_date) { return 1 }
+          return 0
+        })
+
         console.log("Publishing schedule", schedule)
         let r = nodecg.Replicant(`${schedule}/schedule`)
         r.value = groupedSchedules[schedule]

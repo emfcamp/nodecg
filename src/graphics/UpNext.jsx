@@ -1,39 +1,47 @@
+import { useEffect } from 'react'
+import { useReplicant, useReplicatedTime } from '~/src/nodecg-hooks'
+
 export function UpNext () {
+  const time = useReplicatedTime()
+  const [stageA] = useReplicant('stage-a/schedule')
+  const [stageB] = useReplicant('stage-b/schedule')
+  const [stageC] = useReplicant('stage-c/schedule')
+
+  function upNext(stage) {
+    if (stage === null) { return null }
+
+    return stage.find(content => {
+      let start_time = new Date(content.start_date)
+
+      return start_time >= time && start_time.getDay() == time.getDay()
+    });
+  }
+
+  function stageDetail(stage, id) {
+    const next = upNext(stage)
+    if (next === null || next === undefined) { return null }
+
+    return (
+      <div id={ id } className="track">
+        <div className="time-and-place">
+          <p className="venue">{ next.venue }</p>
+          <p className="time">{ next.start_time }</p>
+        </div>
+        <div className="content">
+          <p className="title">{ next.title }</p>
+          <p className="speaker">{ next.speaker }</p>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div id="top">
       <h1>Up Next</h1>
       <div className="up-next">
-        <div id="stage-a" className="track">
-          <div className="time-and-place">
-            <p className="venue">Stage A</p>
-            <p className="time">3:45pm</p>
-          </div>
-          <div className="content">
-            <p className="title">How I'm building my monstrous electric motorcycle from hacked scrap EV & Hybrid parts.
-</p>
-            <p className="speaker">Russell Couper</p>
-          </div>
-        </div>
-        <div id="stage-b" className="track">
-          <div className="time-and-place">
-            <p className="venue">Stage B</p>
-            <p className="time">3:40pm</p>
-          </div>
-          <div className="content">
-            <p className="title">Adventures with Home Energy Monitoring (with a Raspberry Pi &amp; many Arduinos)</p>
-            <p className="speaker">Lee V</p>
-          </div>
-        </div>
-        <div id="stage-c" className="track">
-          <div className="time-and-place">
-            <p className="venue">Stage C</p>
-            <p className="time">3:50pm</p>
-          </div>
-          <div className="content">
-            <p className="title">Being YouTubers!</p>
-            <p className="speaker">James Bruton, Matt Denton, Ruth Amos</p>
-          </div>
-        </div>
+        { stageDetail(stageA, 'stage-a') }
+        { stageDetail(stageB, 'stage-b') }
+        { stageDetail(stageC, 'stage-c') }
       </div>
     </div>
   )
