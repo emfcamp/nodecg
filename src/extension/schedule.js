@@ -78,4 +78,5 @@ export function schedule (nodecg) {
   }
 
   loadSchedule()
+  setInterval(loadSchedule, 60000) // Reload the schedule once a minute
 }
