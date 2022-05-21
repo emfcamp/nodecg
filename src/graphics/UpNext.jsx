@@ -1,10 +1,11 @@
 import { useReplicant, useReplicatedTime, stageName } from '~/src/nodecg-hooks'
 
-export function UpNext () {
+export function UpNext (props) {
   const time = useReplicatedTime()
   const [stageA] = useReplicant('stage-a/schedule')
   const [stageB] = useReplicant('stage-b/schedule')
   const [stageC] = useReplicant('stage-c/schedule')
+  const ready = [stageA, stageB, stageC].every((i) => i !== null)
 
   function upNext(stage) {
     if (stage === null) { return null }
@@ -19,7 +20,6 @@ export function UpNext () {
   function stageDetail(stage, id) {
     const next = upNext(stage)
     if (next === null || next === undefined) { return null }
-    console.log(stageName(), id)
     const currentTrack = stageName() === id ? 'current-track' : '';
 
     return (
@@ -38,7 +38,7 @@ export function UpNext () {
 
   return (
     <div id="top">
-      <h1>Up Next</h1>
+      <h1>{ props.title || "Up Next" }</h1>
       <div className="up-next">
         { stageDetail(stageA, 'stage-a') }
         { stageDetail(stageB, 'stage-b') }

@@ -7,26 +7,39 @@ import TextField from '@mui/material/TextField'
 
 export function LiveView () {
   const [activeView, setActiveView] = useScopedReplicant('activeView')
-  const [speakerDetails, setSpeakerDetails] = useScopedReplicant('speakerDetails', { visible: false, title: '', speaker: '' })
-  const [cued, setCued] = useScopedReplicant('cuedSpeakerDetails', { visible: false, title: '', speaker: '' })
+ 
+  const [cuedSpeakerDetails, setCuedSpeakerDetails] = useScopedReplicant('cuedSpeakerDetails', { visible: false, title: '', speaker: '', doNotRecord: false })
+  const [speakerDetails, setSpeakerDetails] = useScopedReplicant('speakerDetails', { visible: false, title: '', speaker: '', doNotRecord: false })
+
+  const ready = [activeView, cuedSpeakerDetails, speakerDetails].every(i => i !== null)
 
   function cue () {
-    setSpeakerDetails(cued)
+    setSpeakerDetails(cuedSpeakerDetails)
     setActiveView('live')
   }
 
+  if (!ready) { return null }
+
   return (
     <>
+      <h2>Current Content</h2>
       <FormGroup>
-        <FormControlLabel label="Visible" control={
-          <Checkbox id="visible" size="large" checked={ cued.visible } onChange={ () => setCued({ ...cued, visible: !cued.visible })} />
+        <TextField id="title" label="Content Title" margin="normal" variant="outlined" InputLabelProps={{ shrink: true }} value={ cuedSpeakerDetails.title } onChange={ (e) => setCuedSpeakerDetails({ ...cuedSpeakerDetails, title: e.target.value }) } />
+      </FormGroup>
+      <FormGroup>
+        <TextField id="speaker" label="Speaker" margin="normal" variant="outlined" InputLabelProps={{ shrink: true }} value={ cuedSpeakerDetails.speaker } onChange={ (e) => setCuedSpeakerDetails({ ...cuedSpeakerDetails, speaker: e.target.value }) } />
+      </FormGroup>
+      <FormGroup>
+        <FormControlLabel label="Do not record" control={
+          <Checkbox id="do-not-record" size="large" checked={ cuedSpeakerDetails.doNotRecord } onChange={ () => setCuedSpeakerDetails({ ...cuedSpeakerDetails, doNotRecord: !cuedSpeakerDetails.doNotRecord })} />
         } />
       </FormGroup>
+
+      <h2>Overlays</h2>
       <FormGroup>
-        <TextField id="title" label="Content Title" margin="normal" variant="outlined" InputLabelProps={{ shrink: true }} value={ cued.title } onChange={ (e) => setCued({ ...cued, title: e.target.value }) } />
-      </FormGroup>
-      <FormGroup>
-        <TextField id="speaker" label="Speaker" margin="normal" variant="outlined" InputLabelProps={{ shrink: true }} value={ cued.speaker } onChange={ (e) => setCued({ ...cued, speaker: e.target.value }) } />
+        <FormControlLabel label="Show speaker overlay" control={
+          <Checkbox id="visible" size="large" checked={ cuedSpeakerDetails.visible } onChange={ () => setCuedSpeakerDetails({ ...cuedSpeakerDetails, visible: !cuedSpeakerDetails.visible })} />
+        } />
       </FormGroup>
 
       <Button onClick={ cue } variant="contained">Cue</Button>

@@ -23,14 +23,16 @@ export function SpeakerDetails () {
       }
 
       if (newValue.visible && oldValue.visible) {
-        setVisible(false)
+        if (newValue.title != oldValue.title || newValue.speaker != oldValue.speaker) {
+          setVisible(false)
 
-        timeoutHandle = setTimeout(() => {
-          setTitle(newValue.title)
-          setSpeaker(newValue.speaker)
-          setVisible(true)
-          timeoutHandle = null
-        }, 1000)
+          timeoutHandle = setTimeout(() => {
+            setTitle(newValue.title)
+            setSpeaker(newValue.speaker)
+            setVisible(true)
+            timeoutHandle = null
+          }, 1000)
+        }
       }
     }
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 export function useReplicant (name, defaultValue = null) {
   const replicant = window.nodecg.Replicant(name, { defaultValue })
-  const [value, setValue] = useState(defaultValue)
+  const [value, setValue] = useState(null)
 
   function setReplicantValue (newValue) {
     replicant.value = newValue
@@ -10,7 +10,9 @@ export function useReplicant (name, defaultValue = null) {
   }
 
   useEffect(() => {
-    setValue(defaultValue)
+    NodeCG.waitForReplicants(replicant).then(() => {
+      setValue(replicant.value)
+    })
 
     function onReplicantChanged (newValue) {
       setValue(newValue)
