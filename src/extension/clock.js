@@ -10,6 +10,6 @@ export function clock (nodecg) {
     tick()
   }
 
-  setInterval(tick, 1000)
+  setInterval(tick, 500)
   nodecg.listenFor('updateTimeOffset', receiveUpdate)
 }
