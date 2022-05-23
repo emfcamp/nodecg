@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 const imageUrl = new URL(
-  './images/safezones.png',
+  '../images/safezones.png',
   import.meta.url
 )
 

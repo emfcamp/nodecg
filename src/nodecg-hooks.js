@@ -29,7 +29,7 @@ export function useReplicant (name, defaultValue = null) {
 }
 
 export function stageName () {
-  return document.location.pathname.split("/")[4]
+  return document.location.pathname.split("/")[4].replace(/-(stream|stage)/, '')
 }
 
 export function useScopedReplicant (name, defaultValue = null) {
@@ -94,7 +94,7 @@ export function useReplicatedTime () {
     }
 
     window.nodecg.listenFor('tick', onTimeReceived)
-    timer = setInterval(incrementTime, 1000)
+    const timer = setInterval(incrementTime, 1000)
 
     return () => {
       window.nodecg.unlisten('tick', onTimeReceived)

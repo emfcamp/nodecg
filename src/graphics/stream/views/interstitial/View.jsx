@@ -1,6 +1,6 @@
 import { Sponsors } from './Sponsors'
-import { UpNext } from '~/src/graphics/UpNext'
-import { SlideShow, Slide } from '~/src/graphics/SlideShow'
+import { UpNext } from '~/src/graphics/components/UpNext'
+import { SlideShow, Slide } from '~/src/graphics/components/SlideShow'
 
 export function InterstitialView () {
   const sponsors = <Sponsors />

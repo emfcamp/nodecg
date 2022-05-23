@@ -1,6 +1,6 @@
 import { useScopedReplicant } from '~/src/nodecg-hooks'
-import { SpeakerDetails } from './SpeakerDetails'
-import { UpNext } from '~/src/graphics/UpNext'
+import { SpeakerDetails } from '~src/graphics/components/SpeakerDetails'
+import { UpNext } from '~/src/graphics/components/UpNext'
 
 export function LiveView () {
   [currentContent] = useScopedReplicant('speakerDetails')

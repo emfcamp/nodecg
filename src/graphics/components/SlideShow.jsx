@@ -1,5 +1,5 @@
 import { useState, cloneElement, Children } from "react"
-import { useTimeout } from "../nodecg-hooks"
+import { useTimeout } from "~/src/nodecg-hooks"
 
 export function SlideShow (props) {
   const [activeChild, setActiveChild] = useState(0)

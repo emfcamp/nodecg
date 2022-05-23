@@ -4,19 +4,19 @@ import { LiveView } from './views/live/View'
 import { InterstitialView } from './views/interstitial/View'
 
 const slideUrl = new URL(
-  './images/slide.png?width=1920&height=1080',
+  '../images/slide.png?width=1920&height=1080',
   import.meta.url
 )
 const videoUrl = new URL(
-  './images/video-frame.png?width=1920&height=1080',
+  '../images/video-frame.png?width=1920&height=1080',
   import.meta.url
 )
 const imageUrl = new URL(
-  './images/tall-video-frame.png?width=420&height=570',
+  '../images/tall-video-frame.png?width=420&height=570',
   import.meta.url
 )
 const bugUrl = new URL(
-  './images/logo.png?width=275&height=98',
+  '../images/logo.png?width=275&height=98',
   import.meta.url
 )
 

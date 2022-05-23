@@ -22,9 +22,9 @@
     },
     "targets": {
         "graphics-emf": {
-            "source": "src/graphics/emf/index.html",
-            "distDir": "./graphics/emf",
-            "publicUrl": "/bundles/emf-nodecg/graphics/emf"
+            "source": "src/graphics/stream/index.html",
+            "distDir": "./graphics/stream",
+            "publicUrl": "/bundles/emf-nodecg/graphics/stream"
         },
         "dashboard-dev": {
             "source": "src/dashboards/dev/index.html",
@@ -47,30 +47,23 @@
         "compatibleRange": ">= 0.9",
         "graphics": [
             {
-                "name": "stage-a",
-                "title": "Stage A Graphics",
-                "file": "stage-a/index.html",
+                "name": "stage-a-stream",
+                "title": "Stage A Stream Graphics",
+                "file": "stage-a-stream/index.html",
                 "width": 1920,
                 "height": 1080
             },
             {
-                "name": "stage-b",
-                "title": "Stage B Graphics",
-                "file": "stage-b/index.html",
+                "name": "stage-b-stream",
+                "title": "Stage B Stream Graphics",
+                "file": "stage-b-stream/index.html",
                 "width": 1920,
                 "height": 1080
             },
             {
                 "name": "stage-c",
                 "title": "Stage C Graphics",
-                "file": "stage-c/index.html",
-                "width": 1920,
-                "height": 1080
-            },
-            {
-                "name": "stage-t",
-                "title": "Test Stage Graphics",
-                "file": "stage-t/index.html",
+                "file": "stage-c-stream/index.html",
                 "width": 1920,
                 "height": 1080
             }
@@ -98,12 +91,6 @@
                 "name": "stage-c",
                 "title": "Stage C",
                 "file": "stage-c/index.html",
-                "fullbleed": true
-            },
-            {
-                "name": "stage-t",
-                "title": "Test Stage",
-                "file": "stage-t/index.html",
                 "fullbleed": true
             }
         ],

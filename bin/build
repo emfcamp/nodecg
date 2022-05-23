@@ -5,7 +5,7 @@ ROOT=$(git rev-parse --show-toplevel)
 
 mkdir -p "${ROOT}/dashboard"
 pushd "${ROOT}/dashboard"
-for STAGE in a b c t; do
+for STAGE in a b c; do
   if [ ! -h "stage-${STAGE}" ]; then
     ln -s stage "stage-${STAGE}"
   fi
@@ -14,9 +14,9 @@ popd
 
 mkdir -p "${ROOT}/graphics"
 pushd "${ROOT}/graphics"
-for STAGE in a b c t; do
-  if [ ! -h "stage-${STAGE}" ]; then
-    ln -s emf "stage-${STAGE}"
+for STAGE in a b c; do
+  if [ ! -h "stage-${STAGE}-stream" ]; then
+    ln -s stream "stage-${STAGE}-stream"
   fi
 done
 popd
