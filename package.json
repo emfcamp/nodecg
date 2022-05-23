@@ -21,10 +21,15 @@
         "watch": "./node_modules/.bin/parcel watch"
     },
     "targets": {
-        "graphics-emf": {
+        "graphics-stream": {
             "source": "src/graphics/stream/index.html",
             "distDir": "./graphics/stream",
             "publicUrl": "/bundles/emf-nodecg/graphics/stream"
+        },
+        "graphics-stage": {
+            "source": "src/graphics/stage/index.html",
+            "distDir": "./graphics/stage",
+            "publicUrl": "/bundles/emf-nodecg/graphics/stage"
         },
         "dashboard-dev": {
             "source": "src/dashboards/dev/index.html",
@@ -54,6 +59,13 @@
                 "height": 1080
             },
             {
+                "name": "stage-a-stage",
+                "title": "Stage A Stage Graphics",
+                "file": "stage-a-stage/index.html",
+                "width": 1920,
+                "height": 1080
+            },
+            {
                 "name": "stage-b-stream",
                 "title": "Stage B Stream Graphics",
                 "file": "stage-b-stream/index.html",
@@ -61,9 +73,23 @@
                 "height": 1080
             },
             {
+                "name": "stage-b-stage",
+                "title": "Stage B Stage Graphics",
+                "file": "stage-b-stage/index.html",
+                "width": 1920,
+                "height": 1080
+            },
+            {
                 "name": "stage-c",
                 "title": "Stage C Graphics",
                 "file": "stage-c-stream/index.html",
+                "width": 1920,
+                "height": 1080
+            },
+            {
+                "name": "stage-c-stage",
+                "title": "Stage C Stage Graphics",
+                "file": "stage-c-stage/index.html",
                 "width": 1920,
                 "height": 1080
             }

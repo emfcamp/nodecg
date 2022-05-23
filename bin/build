@@ -18,6 +18,9 @@ for STAGE in a b c; do
   if [ ! -h "stage-${STAGE}-stream" ]; then
     ln -s stream "stage-${STAGE}-stream"
   fi
+  if [ ! -h "stage-${STAGE}-stage" ]; then
+    ln -s stream "stage-${STAGE}-stage"
+  fi
 done
 popd
 
