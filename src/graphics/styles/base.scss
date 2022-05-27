@@ -266,4 +266,19 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
       .speaker { font-size: 38px; }
     }
   }
+
+  &.youth-workshops {
+    gap: 30px;
+    
+    .time-and-place {
+      width: 15%;
+      .time { font-size: 60px; }
+    }
+  
+    .content {
+      width: 85%;
+      .title { font-size: 38px; }
+      .speaker { font-size: 38px; }
+    }
+  }
 }
