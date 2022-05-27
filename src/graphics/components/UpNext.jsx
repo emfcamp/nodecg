@@ -19,6 +19,7 @@ export function UpNext (props) {
 
   function stageDetail(stage, id) {
     const next = upNext(stage)
+ 
     if (next === null || next === undefined) { return null }
     const currentTrack = stageName() === id ? 'current-track' : '';
 
