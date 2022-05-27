@@ -36,7 +36,7 @@ export function Workshops (props) {
     const currentTrack = stageName() === id ? 'current-track' : '';
 
     return (
-      <div id={ id } key={ id } className={ `track ${currentTrack}` }>
+      <div id={ id } key={ id } className="track current-track">
         <div className="time-and-place">
           <p className="venue">{ next.venue }</p>
           <p className="time">{ next.start_time }</p>

@@ -155,6 +155,14 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
     margin-bottom: 40px;
   }
 
+  h2 {
+    margin-top: -40px;
+    margin-bottom: 40px;
+    font: 'Raleway';
+    font-size: 40px;
+    text-align: center;
+  }
+
   .container {
     background-color: $bright-background-transparent;
     margin: 0 220px;
@@ -255,6 +263,20 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
 
   // Workshops have to be packed in tighter because there are more of them.
   &.workshops {
+    gap: 30px;
+    
+    .time-and-place {
+      .venue { font-size: 40px; }
+    }
+
+    .content {
+      .title { font-size: 38px; }
+      .speaker { font-size: 38px; }
+    }
+  }
+
+  // Workshops have to be packed in tighter because there are more of them.
+  &.villages {
     gap: 30px;
     
     .time-and-place {

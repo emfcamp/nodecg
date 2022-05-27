@@ -20,7 +20,7 @@ export function YouthWorkshops (props) {
 
   function detail(content) {
     return (
-      <div id={ content.id } key={ content.id } className={ `track` }>
+      <div id={ content.id } key={ content.id } className="track current-track">
         <div className="time-and-place">
           <p className="time">{ content.start_time }</p>
         </div>
