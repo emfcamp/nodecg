@@ -252,4 +252,18 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
       }
     }
   }
+
+  // Workshops have to be packed in tighter because there are more of them.
+  &.workshops {
+    gap: 30px;
+    
+    .time-and-place {
+      .venue { font-size: 40px; }
+    }
+
+    .content {
+      .title { font-size: 38px; }
+      .speaker { font-size: 38px; }
+    }
+  }
 }
