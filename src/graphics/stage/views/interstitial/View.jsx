@@ -9,19 +9,19 @@ export function InterstitialView () {
   return (
     <div id="content">
       <SlideShow>
-        <Slide timeout={1}>
+        <Slide timeout={30000}>
           <UpNext />
         </Slide>
-        <Slide timeout={1}>
+        <Slide timeout={30000}>
           <Workshops />
         </Slide>
-        <Slide timeout={1}>
+        <Slide timeout={30000}>
           <YouthWorkshops />
         </Slide>
         <Slide timeout={30000}>
           <Villages />
         </Slide>
-        <Slide timeout={1}>
+        <Slide timeout={30000}>
           <Sponsors />
         </Slide>
       </SlideShow>
