@@ -1,7 +1,7 @@
 import https from 'https'
 
 export function schedule (nodecg) {
-  const scheduleUrl = 'https://www.emfcamp.org/schedule/2018.json'
+  const scheduleUrl = 'https://www.emfcamp.org/schedule/2022.json'
   const venues = {
     "stage-a": ["Stage A"],
     "stage-b": ["Stage B"],
