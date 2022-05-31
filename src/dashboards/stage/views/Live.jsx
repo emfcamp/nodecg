@@ -10,11 +10,14 @@ export function LiveView () {
  
   const [cuedSpeakerDetails, setCuedSpeakerDetails] = useScopedReplicant('cuedSpeakerDetails', { visible: false, title: '', speaker: '', doNotRecord: false })
   const [speakerDetails, setSpeakerDetails] = useScopedReplicant('speakerDetails', { visible: false, title: '', speaker: '', doNotRecord: false })
+  const [cuedTechnicalDifficulties, setCuedTechnicalDifficulties] = useScopedReplicant('cuedTechnicalDifficulties', false)
+  const [technicalDifficulties, setTechnicalDifficulties] = useScopedReplicant('technicalDifficulties', false)
 
   const ready = [activeView, cuedSpeakerDetails, speakerDetails].every(i => i !== null)
 
   function cue () {
     setSpeakerDetails(cuedSpeakerDetails)
+    setTechnicalDifficulties(cuedTechnicalDifficulties)
     setActiveView('live')
   }
 
@@ -39,6 +42,14 @@ export function LiveView () {
       <FormGroup>
         <FormControlLabel label="Show speaker overlay" control={
           <Checkbox id="visible" size="large" checked={ cuedSpeakerDetails.visible } onChange={ () => setCuedSpeakerDetails({ ...cuedSpeakerDetails, visible: !cuedSpeakerDetails.visible })} />
+        } />
+      </FormGroup>
+
+      <h2>Technical Difficulties</h2>
+      <p>Setting this on will show an apology message and what's on other stages for people watching the live stream. It will not appear on the main stage screens.</p>
+      <FormGroup>
+        <FormControlLabel label="Technical difficulties" control={
+          <Checkbox id="visible" size="large" checked={ cuedTechnicalDifficulties } onChange={ () => setCuedTechnicalDifficulties(!cuedTechnicalDifficulties) } />
         } />
       </FormGroup>
 
