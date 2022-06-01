@@ -3,19 +3,18 @@ import { useTimeout } from "~/src/nodecg-hooks"
 
 export function SlideShow (props) {
   const [activeChild, setActiveChild] = useState(0)
+  const displayedChildren = props.children.filter(c => c.props.display === undefined || c.props.display)
 
   function nextSlide() {
-    console.log("Active child", activeChild, props.children.length)
-    if (activeChild == props.children.length - 1) {
+    if (activeChild == displayedChildren.length - 1) {
       setActiveChild(0)
       return
     }
 
     setActiveChild(activeChild + 1)
-    console.log("Active child", activeChild, props.children.length)
   }
 
-  return cloneElement(props.children[activeChild], { triggerNextSlide: nextSlide })
+  return cloneElement(displayedChildren[activeChild], { triggerNextSlide: nextSlide })
 }
 
 export function Slide (props) {

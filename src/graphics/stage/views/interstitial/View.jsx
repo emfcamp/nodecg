@@ -4,8 +4,12 @@ import { Workshops } from '~/src/graphics/components/Workshops'
 import { YouthWorkshops } from '~/src/graphics/components/YouthWorkshops'
 import { Villages } from '~/src/graphics/components/Villages'
 import { SlideShow, Slide } from '~/src/graphics/components/SlideShow'
+import { Messages } from '~/src/graphics/components/Messages'
+import { useReplicant } from '~/src/nodecg-hooks'
 
 export function InterstitialView () {
+  const [messages] = useReplicant('messages')
+
   return (
     <div id="content">
       <SlideShow>
@@ -20,6 +24,9 @@ export function InterstitialView () {
         </Slide>
         <Slide timeout={30000}>
           <Villages />
+        </Slide>
+        <Slide timeout={30000} display={ messages && messages.length > 0 }>
+          <Messages messages={messages} />
         </Slide>
         <Slide timeout={30000}>
           <Sponsors />
