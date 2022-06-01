@@ -17,6 +17,7 @@ const goldSponsors = [
 const silverSponsors = [
   new URL('~/src/graphics/images/sponsors/huboo.png?height=70', import.meta.url),
   new URL('~/src/graphics/images/sponsors/iluli.png?height=70', import.meta.url),
+  new URL('~/src/graphics/images/sponsors/mullvad.png?height=70', import.meta.url),
   new URL('~/src/graphics/images/sponsors/onega.png?height=70', import.meta.url),
   new URL('~/src/graphics/images/sponsors/ucl.png?height=70', import.meta.url),
 ]
